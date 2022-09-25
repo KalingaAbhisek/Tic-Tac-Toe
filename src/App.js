@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import Icon from './Components/icon'
+import Icon from './Components/icon';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Card, CardBody, Container, Button, Col, Row } from 'reactstrap';
@@ -88,6 +88,7 @@ const App = () => {
     }
     if (cnt === 9 && !winMessage.includes("win")) {
       setWinMessage(`DRAW`);
+      return toast("Draw!",{type:"info"});
     }
   }
   return (

@@ -1,21 +1,22 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import Icon from './Components/icon'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {Card,CardBody,Container,Button,Col,Row} from 'reactstrap'
+import { Card, CardBody, Container, Button, Col, Row } from 'reactstrap';
 
-const itemArray=new Array(9).fill("empty")
-const App=()=> {
-  const[isCross,setIsCross]=useState(false)
-  const[winMessage,setWinMessage]=useState("")
-  const reloadGame=()=>{
+const itemArray = new Array(9).fill("empty");
+
+const App = () => {
+  const [isCross, setIsCross] = useState(false);
+  const [winMessage, setWinMessage] = useState("");
+  const reloadGame = () => {
     setIsCross(false)
     setWinMessage("")
-    itemArray.fill("empty",0,9)
+    itemArray.fill("empty", 0, 9)
   }
-  const checkWinner=()=>{
+  const checkWinner = () => {
     if (
       itemArray[0] === itemArray[1] &&
       itemArray[0] === itemArray[2] &&
@@ -66,32 +67,32 @@ const App=()=> {
       setWinMessage(`${itemArray[2]} won`);
     }
   };
-  const changeItem= itemNumber=>{
-    if(winMessage){
-      return toast(winMessage,{type:"success"})
+  const changeItem = itemNumber => {
+    if (winMessage) {
+      return toast(winMessage, { type: "success" })
     }
-    if(itemArray[itemNumber]==="empty"){
-      itemArray[itemNumber]=isCross?"cross":"circle"
+    if (itemArray[itemNumber] === "empty") {
+      itemArray[itemNumber] = isCross ? "cross" : "circle"
       setIsCross(!isCross)
     }
-    else{
-      return toast("Already Filled",{type:"error"})
+    else {
+      return toast("Already Filled", { type: "error" })
     }
     checkWinner();
-    let cnt=0;
-    for (let i=0; i<itemArray.length; i++){
-      console.log(itemArray[i]);
-      if(itemArray[i] !== "empty"){
+    let cnt = 0;
+    for (let i = 0; i < itemArray.length; i++) {
+      // console.log(itemArray[i]);
+      if (itemArray[i] !== "empty") {
         cnt++;
       }
     }
-    if(cnt===9 && winMessage==="draw"){
-      return toast("Draw (Please Reload the Page)",{type:"info"})
+    if (cnt === 9 && !winMessage.includes("win")) {
+      setWinMessage(`DRAW`);
     }
   }
   return (
     <Container className="p-5">
-      <ToastContainer position="bottom-center"/>
+      <ToastContainer position="bottom-center" />
       <Row>
         <Col md={6} className="offset-md-3">
           {winMessage ? (
@@ -101,16 +102,16 @@ const App=()=> {
               </h1>
               <Button color="success" block onClick={reloadGame}>Reload the Game</Button>
             </div>
-          ):(
+          ) : (
             <h1 className="text-center text-warning">
-              {isCross?"Cross":"Circle"} turns
+              {isCross ? "Cross" : "Circle"} turns
             </h1>
           )}
           <div className="grid">
-            {itemArray.map((item,index)=>(
-              <Card color="warning" onClick={()=>changeItem(index) }>
+            {itemArray.map((item, index) => (
+              <Card color="warning" onClick={() => changeItem(index)}>
                 <CardBody className="box">
-                  <Icon name={item}/>
+                  <Icon name={item} />
                 </CardBody>
               </Card>
             ))}

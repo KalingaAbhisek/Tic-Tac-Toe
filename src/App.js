@@ -86,7 +86,7 @@ const App = () => {
         cnt++;
       }
     }
-    if (cnt === 9 && !winMessage.includes("win")) {
+    if (cnt === 9 && !winMessage.includes("won")) {
       setWinMessage(`DRAW`);
       return toast("Draw!",{type:"info"});
     }

@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Card, CardBody, Container, Button, Col, Row } from 'reactstrap';
 
 const itemArray = new Array(9).fill("empty");
+var tempWinMsg = '';
 
 const App = () => {
   const [isCross, setIsCross] = useState(false);
@@ -20,6 +21,7 @@ const App = () => {
 
   const showWinMessage = (item) => {
     const winMsg = `${item} won!`;
+    tempWinMsg = winMsg;
     setWinMessage(winMsg);
     return toast(winMsg, { type: "info" });
   };
@@ -30,54 +32,86 @@ const App = () => {
       itemArray[0] === itemArray[2] &&
       itemArray[0] !== "empty"
     ) {
-      showWinMessage(itemArray[0]);
+      // showWinMessage(itemArray[0]);
+      const winMsg = `${itemArray[0]} won!`;
+      tempWinMsg = winMsg;
+      setWinMessage(winMsg);
+      return toast(winMsg, { type: "info" });
     } else if (
       itemArray[3] !== "empty" &&
       itemArray[3] === itemArray[4] &&
       itemArray[4] === itemArray[5]
     ) {
-      showWinMessage(itemArray[3]);
+      // showWinMessage(itemArray[3]);
+      const winMsg = `${itemArray[3]} won!`;
+      tempWinMsg = winMsg;
+      setWinMessage(winMsg);
+      return toast(winMsg, { type: "info" });
     } else if (
       itemArray[6] !== "empty" &&
       itemArray[6] === itemArray[7] &&
       itemArray[7] === itemArray[8]
     ) {
-      showWinMessage(itemArray[6]);
+      // showWinMessage(itemArray[6]);
+      const winMsg = `${itemArray[6]} won!`;
+      tempWinMsg = winMsg;
+      setWinMessage(winMsg);
+      return toast(winMsg, { type: "info" });
     } else if (
       itemArray[0] !== "empty" &&
       itemArray[0] === itemArray[3] &&
       itemArray[3] === itemArray[6]
     ) {
-      showWinMessage(itemArray[0]);
+      // showWinMessage(itemArray[0]);
+      const winMsg = `${itemArray[0]} won!`;
+      tempWinMsg = winMsg;
+      setWinMessage(winMsg);
+      return toast(winMsg, { type: "info" });
     } else if (
       itemArray[1] !== "empty" &&
       itemArray[1] === itemArray[4] &&
       itemArray[4] === itemArray[7]
     ) {
-      showWinMessage(itemArray[1]);
+      // showWinMessage(itemArray[1]);
+      const winMsg = `${itemArray[1]} won!`;
+      tempWinMsg = winMsg;
+      setWinMessage(winMsg);
+      return toast(winMsg, { type: "info" });
     } else if (
       itemArray[2] !== "empty" &&
       itemArray[2] === itemArray[5] &&
       itemArray[5] === itemArray[8]
     ) {
-      showWinMessage(itemArray[2]);
+      // showWinMessage(itemArray[2]);
+      const winMsg = `${itemArray[2]} won!`;
+      tempWinMsg = winMsg;
+      setWinMessage(winMsg);
+      return toast(winMsg, { type: "info" });
     } else if (
       itemArray[0] !== "empty" &&
       itemArray[0] === itemArray[4] &&
       itemArray[4] === itemArray[8]
     ) {
-      showWinMessage(itemArray[0]);
+      // showWinMessage(itemArray[0]);
+      const winMsg = `${itemArray[0]} won!`;
+      tempWinMsg = winMsg;
+      setWinMessage(winMsg);
+      return toast(winMsg, { type: "info" });
     } else if (
       itemArray[2] !== "empty" &&
       itemArray[2] === itemArray[4] &&
       itemArray[4] === itemArray[6]
     ) {
-      showWinMessage(itemArray[2]);
+      // showWinMessage(itemArray[2]);
+      const winMsg = `${itemArray[2]} won!`;
+      tempWinMsg = winMsg;
+      setWinMessage(winMsg);
+      return toast(winMsg, { type: "info" });
     }
   };
 
   const changeItem = itemNumber => {
-    console.log(`winMessage: ${winMessage}`);
+
     if (winMessage !== '') {
       return toast(winMessage, { type: "success" });
     }
@@ -95,7 +129,8 @@ const App = () => {
         cnt++;
       }
     }
-    if (cnt === 9 && winMessage === '') {
+    console.log(`winMessage: ${tempWinMsg}`);
+    if (cnt === 9 && tempWinMsg === '') {
       setWinMessage(`DRAW`);
       return toast("DRAW!", { type: "info" });
     }

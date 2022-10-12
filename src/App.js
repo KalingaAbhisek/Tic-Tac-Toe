@@ -19,13 +19,6 @@ const App = () => {
     itemArray.fill("empty", 0, 9);
   };
 
-  const showWinMessage = (item) => {
-    const winMsg = `${item} won!`;
-    tempWinMsg = winMsg;
-    setWinMessage(winMsg);
-    return toast(winMsg, { type: "info" });
-  };
-
   const checkWinner = () => {
     if (
       itemArray[0] === itemArray[1] &&
@@ -150,12 +143,12 @@ const App = () => {
             </div>
           ) : (
             <h1 className="text-center text-warning">
-              {isCross ? "Cross" : "Circle"} turns
+              {isCross ? "Cross's" : "Circle's"} turn
             </h1>
           )}
           <div className="grid">
             {itemArray.map((item, index) => (
-              <Card color="warning" onClick={() => changeItem(index)}>
+              <Card className={'card card' + index} onClick={() => changeItem(index)}>
                 <CardBody className="box">
                   <Icon name={item} />
                 </CardBody>

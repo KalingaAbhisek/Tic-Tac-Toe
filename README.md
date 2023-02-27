@@ -2,6 +2,7 @@
 Made a Tic Tac Toe game using React JS. 
 
 Play [here](https://tictactoe.kalinga.io/), have fun.
+
 All contributions are welcomed!
 
 ![image](https://user-images.githubusercontent.com/65694523/221580058-6b2af4ed-9d28-4843-9e8e-396702ddaaea.png)
